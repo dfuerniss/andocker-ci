@@ -56,13 +56,14 @@ RUN apt-get install -y ia32-libs
 RUN wget http://dl.google.com/android/android-sdk_r22.6-linux.tgz
 RUN tar -xvzf android-sdk_r22.6-linux.tgz
 RUN mv android-sdk-linux /usr/local/android-sdk
-# install android-19
-RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-19,build-tools-19.0.1,build-tools-19.0.2,sysimg-19
 
 # set environment
 ENV ANDROID_HOME /usr/local/android-sdk
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
+
+# install android-19
+RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-19,build-tools-19.0.1,build-tools-19.0.2,sysimg-19
 
 # clean up temporary files
 RUN cd /; rm android-sdk_r22.6-linux.tgz 
