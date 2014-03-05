@@ -29,6 +29,7 @@ RUN apt-get update
 RUN apt-get install -y jenkins
 
 # install jenkins plugins
+RUN mkdir /root/.jenkins
 RUN mkdir /root/.jenkins/plugins
 RUN curl -sf -o /root/.jenkins/plugins/ssh-credentials.hpi -L http://mirrors.jenkins-ci.org/plugins/ssh-credentials/latest/ssh-credentials.hpi
 RUN curl -sf -o /root/.jenkins/plugins/git-client.hpi -L http://mirrors.jenkins-ci.org/plugins/git-client/latest/git-client.hpi
