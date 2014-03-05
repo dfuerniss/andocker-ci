@@ -67,6 +67,8 @@ RUN cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst
 RUN cd /tmp ; dpkg-deb -b . /fuse.deb
 RUN cd /tmp ; dpkg -i /fuse.deb
 
+ADD https://github.com/dfuerniss/andocker-ci/README.md /
+
 # install android sdk and prerequisites
 RUN apt-get install -y ia32-libs
 RUN wget http://dl.google.com/android/android-sdk_r22.6-linux.tgz
