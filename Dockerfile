@@ -29,12 +29,18 @@ RUN apt-get update
 RUN apt-get install -y jenkins
 
 # install jenkins plugins
-RUN curl -sf -o /var/lib/jenkins/plugins/git-client.hpi -L http://mirrors.jenkins-ci.org/plugins/git-client/latest/git-client.hpi
-RUN curl -sf -o /var/lib/jenkins/plugins/git.hpi -L http://mirrors.jenkins-ci.org/plugins/git/latest/git.hpi
-RUN curl -sf -o /var/lib/jenkins/plugins/android-lint.hpi -L http://mirrors.jenkins-ci.org/plugins/android-lint/latest/android-lint.hpi
-RUN curl -sf -o /var/lib/jenkins/plugins/android-emulator.hpi -L http://mirrors.jenkins-ci.org/plugins/android-emulator/latest/android-emulator.hpi
-RUN curl -sf -o /var/lib/jenkins/plugins/gradle.hpi -L http://mirrors.jenkins-ci.org/plugins/gradle/latest/gradle.hpi
-RUN curl -sf -o /var/lib/jenkins/plugins/scm-sync-configuration.hpi -L http://mirrors.jenkins-ci.org/plugins/scm-sync-configuration/latest/scm-sync-configuration.hpi
+RUN mkdir /root/.jenkins/plugins
+RUN curl -sf -o /root/.jenkins/plugins/ssh-credentials.hpi -L http://mirrors.jenkins-ci.org/plugins/ssh-credentials/latest/ssh-credentials.hpi
+RUN curl -sf -o /root/.jenkins/plugins/git-client.hpi -L http://mirrors.jenkins-ci.org/plugins/git-client/latest/git-client.hpi
+RUN curl -sf -o /root/.jenkins/plugins/scm-api.hpi -L http://mirrors.jenkins-ci.org/plugins/scm-api/latest/scm-api.hpi
+RUN curl -sf -o /root/.jenkins/plugins/credentials.hpi -L http://mirrors.jenkins-ci.org/plugins/credentials/latest/credentials.hpi
+RUN curl -sf -o /root/.jenkins/plugins/git.hpi -L http://mirrors.jenkins-ci.org/plugins/git/latest/git.hpi
+RUN curl -sf -o /root/.jenkins/plugins/gradle.hpi -L http://mirrors.jenkins-ci.org/plugins/gradle/latest/gradle.hpi
+RUN curl -sf -o /root/.jenkins/plugins/analysis-core.hpi -L http://mirrors.jenkins-ci.org/plugins/analysis-core/latest/analysis-core.hpi
+RUN curl -sf -o /root/.jenkins/plugins/android-lint.hpi -L http://mirrors.jenkins-ci.org/plugins/android-lint/latest/android-lint.hpi
+RUN curl -sf -o /root/.jenkins/plugins/port-allocator.hpi -L http://mirrors.jenkins-ci.org/plugins/port-allocator/latest/port-allocator.hpi
+RUN curl -sf -o /root/.jenkins/plugins/android-emulator.hpi -L http://mirrors.jenkins-ci.org/plugins/android-emulator/latest/android-emulator.hpi
+RUN curl -sf -o /root/.jenkins/plugins/scm-sync-configuration.hpi -L http://mirrors.jenkins-ci.org/plugins/scm-sync-configuration/latest/scm-sync-configuration.hpi
 
 # install git
 RUN apt-get install -y git
