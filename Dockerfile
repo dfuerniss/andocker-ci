@@ -85,7 +85,9 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 #RUN echo "y" | android update sdk --no-ui --force --filter tool,platform-tool
 
 # install build-tools
-RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.1,build-tools-19.0.2,build-tools-19.0.3 
+RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.1
+RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.2
+RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.3 
 
 # install android-19
 RUN echo "y" | android update sdk --no-ui -a --force --filter android-19
