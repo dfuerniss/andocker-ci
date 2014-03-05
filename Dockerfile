@@ -78,16 +78,26 @@ ENV ANDROID_HOME /usr/local/android-sdk
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
+# update SDK tools, platform tools and build-tools to latest revision
+RUN BUILD_TOOLS_VERSION=`android list sdk -a -e | grep -Po 'build-tools-\d*\.\d*\.\d*' | head -n 1`
+RUN echo "y" | android update sdk --no-ui --force --filter tools,platform-tools,$BUILD_TOOLS_VERSION
+
+# install build-tools-19.0.3 manually
+#RUN echo "y" | android update sdk --no-ui --force --filter build-tools-19.0.3
+
+# install android extras
+RUN echo "y" | android update sdk --no-ui --force --filter extra-android-m2repository,extra-android-support,extra-google-admob_ads_sdk,extra-google-analytics_sdk_v2,extra-google-gcm,extra-google-google_play_services,extra-google-m2repository,extra-google-play_apk_expansion,extra-google-play_billing,extra-google-play_licensing
+
 # install android-18
-#RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-18
+#RUN echo "y" | android update sdk --no-ui --force --filter android-18
 # install android-17
-#RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-17
+#RUN echo "y" | android update sdk --no-ui --force --filter android-17
 # install android-16
-#RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-16
+#RUN echo "y" | android update sdk --no-ui --force --filter android-16
 # install android-15
-#RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-15
+#RUN echo "y" | android update sdk --no-ui --force --filter android-15
 # install android-14
-#RUN echo "y" | android update sdk --no-ui --force --filter platform-tools,android-14
+#RUN echo "y" | android update sdk --no-ui --force --filter android-14
 
 # clean up temporary files
 RUN cd /; rm android-sdk_r22.6-linux.tgz 
