@@ -91,4 +91,6 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 # clean up temporary files
 RUN cd /; rm android-sdk_r22.6-linux.tgz 
 
+EXPOSE 8080
+
 ENTRYPOINT exec su jenkins -c "java -jar /usr/share/jenkins/jenkins.war"
