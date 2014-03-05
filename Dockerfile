@@ -80,19 +80,13 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 # update SDK tools, platform tools and build-tools to latest revision
 #RUN BUILD_TOOLS_VERSION=`android list sdk -a -e | grep -Po 'build-tools-\d*\.\d*\.\d*' | head -n 1`
-RUN echo "y" | android update sdk --no-ui --force --filter tool,platform-tool
+RUN echo "y" | android update sdk --no-ui -a --force --filter tool,platform-tool
 
 # install build-tools
-RUN echo "y" | android update sdk --no-ui --force --filter build-tools-19.0.1,build-tools-19.0.2,build-tools-19.0.3 
-
-# install android extras
-RUN echo "y" | android update sdk --no-ui --force --filter extra-android-m2repository,extra-android-support,extra-google-analytics_sdk_v2,extra-google-google_play_services,extra-google-m2repository,extra-google-play_apk_expansion,extra-google-play_billing,extra-google-play_licensing
-
-# install Google APIs
-RUN echo "y" | android update sdk --no-ui --force --filter addon-google_apis_x86-google-19,addon-google_apis-google-19
+RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.1,build-tools-19.0.2,build-tools-19.0.3 
 
 # install android-19
-RUN echo "y" | android update sdk --no-ui --force --filter android-19
+RUN echo "y" | android update sdk --no-ui -a --force --filter android-19
 # install android-18
 #RUN echo "y" | android update sdk --no-ui --force --filter android-18
 # install android-17
@@ -103,6 +97,12 @@ RUN echo "y" | android update sdk --no-ui --force --filter android-19
 #RUN echo "y" | android update sdk --no-ui --force --filter android-15
 # install android-14
 #RUN echo "y" | android update sdk --no-ui --force --filter android-14
+
+# install android extras
+RUN echo "y" | android update sdk --no-ui -a --force --filter extra-android-m2repository,extra-android-support,extra-google-analytics_sdk_v2,extra-google-google_play_services,extra-google-m2repository,extra-google-play_apk_expansion,extra-google-play_billing,extra-google-play_licensing
+
+# install Google APIs
+RUN echo "y" | android update sdk --no-ui -a --force --filter addon-google_apis_x86-google-19,addon-google_apis-google-19
 
 # clean up temporary files
 RUN cd /; rm android-sdk_r22.6-linux.tgz 
