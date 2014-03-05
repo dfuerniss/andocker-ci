@@ -82,7 +82,7 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 # update SDK tools, platform tools and build-tools to latest revision
 #RUN BUILD_TOOLS_VERSION=`android list sdk -a -e | grep -Po 'build-tools-\d*\.\d*\.\d*' | head -n 1`
-RUN echo "y" | android update sdk --no-ui -a --force --filter tool,platform-tool
+RUN echo "y" | android update sdk --no-ui --force --filter tool,platform-tool
 
 # install build-tools
 RUN echo "y" | android update sdk --no-ui -a --force --filter build-tools-19.0.1,build-tools-19.0.2,build-tools-19.0.3 
