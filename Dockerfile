@@ -113,5 +113,5 @@ RUN cd /; rm android-sdk_r22.6-linux.tgz
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
-#ENTRYPOINT exec su jenkins -c "java -jar /usr/share/jenkins/jenkins.war"
+#CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+ENTRYPOINT exec su jenkins -c "java -jar /usr/share/jenkins/jenkins.war"
